@@ -4,14 +4,32 @@ import arrowLeft from "../logo/arrowLeft.svg";
 import arrowRight from "../logo/arrowRight.svg";
 
 const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
-  const [showedPage, setShowedPage] = useState([]);
+  const [currentItems, setCurrentItems] = useState(userData.slice(1, 8));
+
+  const [itemOffset, setItemOffset] = useState(0);
+  console.log(currentItems);
+  console.log(itemOffset);
+
+  useEffect(() => {
+    const endOffset = itemOffset + 5;
+    setCurrentItems(userData.slice(itemOffset, endOffset));
+  }, [itemOffset]);
+
+  const next = () => {
+    nextPage();
+    setItemOffset(page);
+  };
+  const prev = () => {
+    setItemOffset(page);
+    previousPage();
+  };
   return (
     <section className="pagination-section">
       <div className="button-container">
-        <button className="pageButton" onClick={previousPage}>
+        <button className="pageButton" onClick={prev}>
           <img src={arrowLeft} alt="arrowLeft" />
         </button>
-        {userData.map((item, index) => {
+        {currentItems.map((item, index) => {
           return (
             <button
               className={`pageButton ${
@@ -20,13 +38,23 @@ const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
               key={index}
               onClick={() => {
                 handlePage(index);
+                setItemOffset(page);
               }}
             >
               {index + 1}
             </button>
           );
         })}
-        <button className="pageButton" onClick={nextPage}>
+        {itemOffset > 15 ? "" : "..."}
+        <button
+          className="pageButton"
+          onClick={() => {
+            handlePage(19);
+          }}
+        >
+          20
+        </button>
+        <button className="pageButton" onClick={next}>
           <img src={arrowRight} alt="arrowLeft" />
         </button>
       </div>

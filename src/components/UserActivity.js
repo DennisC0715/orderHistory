@@ -5,7 +5,7 @@ import { paginateFunction } from "../Redux/userActivity-reducer";
 const UserActivity = ({ buying, selling, onSetData, userData }) => {
   const [isBuySelected, setIsBuySelected] = useState(false);
   const [isSellSelected, setIsSellSelected] = useState(false);
-  const [isAllSelected, setIsAllSelected] = useState(false);
+  const [isAllSelected, setIsAllSelected] = useState(true);
   const pagedBuyingData = paginateFunction(buying);
   const pagedSellingData = paginateFunction(selling);
 
