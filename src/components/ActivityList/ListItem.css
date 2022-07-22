@@ -49,6 +49,7 @@
 }
 
 .item-badge-sell {
+  text-align: center;
   color: #fc5454;
   background: #fde9e9;
   border-radius: 8px;

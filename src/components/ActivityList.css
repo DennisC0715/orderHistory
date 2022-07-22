@@ -1,7 +1,7 @@
 .listContainer {
   position: relative;
   background: #ffffff;
-  height: 155px;
   width: 90%;
-  margin: 16px 5%;
+  margin: 10px 5%;
+  border-radius: 10px;
 }
