@@ -22,7 +22,11 @@
   margin: 0 5px;
   cursor: pointer;
 }
-
+.pageButton:hover {
+  background: #f7f5ff;
+  border: 1px solid #6b47ed;
+  border-radius: 53px;
+}
 .active-pageButton {
   background: #f7f5ff;
   border: 1px solid #6b47ed;

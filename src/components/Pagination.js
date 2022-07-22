@@ -7,8 +7,6 @@ const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
   const [currentItems, setCurrentItems] = useState(userData.slice(1, 8));
 
   const [itemOffset, setItemOffset] = useState(0);
-  console.log(currentItems);
-  console.log(itemOffset);
 
   useEffect(() => {
     const endOffset = itemOffset + 5;
@@ -17,10 +15,10 @@ const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
 
   const next = () => {
     nextPage();
-    setItemOffset(page);
+    // setItemOffset(page);
   };
   const prev = () => {
-    setItemOffset(page);
+    // setItemOffset(page);
     previousPage();
   };
   return (
@@ -38,7 +36,7 @@ const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
               key={index}
               onClick={() => {
                 handlePage(index);
-                setItemOffset(page);
+                // setItemOffset(page);
               }}
             >
               {index + 1}
@@ -49,10 +47,10 @@ const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
         <button
           className="pageButton"
           onClick={() => {
-            handlePage(19);
+            handlePage(userData.length - 1);
           }}
         >
-          20
+          {userData.length}
         </button>
         <button className="pageButton" onClick={next}>
           <img src={arrowRight} alt="arrowLeft" />

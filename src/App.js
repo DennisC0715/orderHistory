@@ -55,6 +55,7 @@ function App() {
         pageData={pageData}
         onSetData={setUserData}
         userData={allData}
+        handlePage={handlePage}
       />
       <ActivityList pageData={pageData} />
       <Pagination

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./UserActivity.css";
 import { paginateFunction } from "../Redux/userActivity-reducer";
 
-const UserActivity = ({ buying, selling, onSetData, userData }) => {
+const UserActivity = ({ buying, selling, onSetData, userData, handlePage }) => {
   const [isBuySelected, setIsBuySelected] = useState(false);
   const [isSellSelected, setIsSellSelected] = useState(false);
   const [isAllSelected, setIsAllSelected] = useState(true);
@@ -14,6 +14,7 @@ const UserActivity = ({ buying, selling, onSetData, userData }) => {
       <button
         className={`button ${isBuySelected ? "button-active" : null}`}
         onClick={() => {
+          handlePage(0);
           onSetData(pagedBuyingData);
           setIsBuySelected(true);
           setIsSellSelected(false);
@@ -25,6 +26,7 @@ const UserActivity = ({ buying, selling, onSetData, userData }) => {
       <button
         className={`button ${isSellSelected ? "button-active" : null}`}
         onClick={() => {
+          handlePage(0);
           onSetData(pagedSellingData);
           setIsSellSelected(true);
           setIsAllSelected(false);
