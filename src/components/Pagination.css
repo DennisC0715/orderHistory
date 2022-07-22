@@ -1,0 +1,21 @@
+.pagination-section {
+  position: relative;
+  display: flex;
+  height: 32px;
+  height: 155px;
+  width: 90%;
+  margin: 16px 5%;
+}
+
+.button-container {
+  justify-content: center;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #ffffff;
+  border-radius: 53px;
+  color: #616161;
+}

@@ -1,4 +1,4 @@
-export const userBuyingData = [
+export const userActivitiesData = [
   {
     coinName: "DOGE/CAD",
     type: "Sell",

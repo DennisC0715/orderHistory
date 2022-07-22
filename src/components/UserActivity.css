@@ -1,0 +1,65 @@
+.container {
+  background: #ffffff;
+  height: 60px;
+  width: 90%;
+  margin: 10px 5%;
+  display: flex;
+  align-items: center;
+}
+
+.badge-buy {
+  position: absolute;
+  text-align: center;
+  right: 20%;
+  top: 31.15%;
+  bottom: 27.87%;
+  background-color: #c2b6eb;
+  padding: 5px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}
+.badge-sell {
+  position: absolute;
+  text-align: center;
+  right: 20%;
+  top: 31.15%;
+  bottom: 27.87%;
+  background-color: #e09a9a;
+  padding: 5px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.button {
+  margin-top: 16;
+  position: relative;
+  width: 164px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  background: #ffffff;
+  color: #979797;
+  border: none;
+  padding-top: 19px;
+  padding-bottom: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #000000;
+  border-bottom: 2px solid #6b47ed;
+}
+
+.button-active {
+  color: #000000;
+  border-bottom: 2px solid #6b47ed;
+}
