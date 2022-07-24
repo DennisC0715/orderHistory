@@ -1,58 +1,70 @@
-import React, { useState, useEffect } from "react";
 import "./Pagination.css";
 import arrowLeft from "../logo/arrowLeft.svg";
 import arrowRight from "../logo/arrowRight.svg";
+import { usePagination, DOTS } from "../customHook/usePagination";
 
-const Pagination = ({ previousPage, userData, page, handlePage, nextPage }) => {
-  const [currentItems, setCurrentItems] = useState(userData.slice(1, 8));
+const Pagination = ({
+  currentPage,
+  totalItemAmount,
+  itemsPerPage,
+  siblingCount = 1,
+  onPageChange,
+}) => {
+  const paginationRange = usePagination({
+    totalItemAmount,
+    itemsPerPage,
+    siblingCount,
+    currentPage,
+  });
 
-  const [itemOffset, setItemOffset] = useState(0);
-
-  useEffect(() => {
-    const endOffset = itemOffset + 5;
-    setCurrentItems(userData.slice(itemOffset, endOffset));
-  }, [itemOffset]);
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
+  }
 
   const next = () => {
-    nextPage();
-    // setItemOffset(page);
+    onPageChange(currentPage + 1);
   };
   const prev = () => {
-    // setItemOffset(page);
-    previousPage();
+    onPageChange(currentPage - 1);
   };
+
+  let lastPage = paginationRange[paginationRange.length - 1];
+
   return (
     <section className="pagination-section">
       <div className="button-container">
-        <button className="pageButton" onClick={prev}>
+        <button
+          className="pageButton"
+          onClick={prev}
+          disabled={currentPage === 1}
+        >
           <img src={arrowLeft} alt="arrowLeft" />
         </button>
-        {currentItems.map((item, index) => {
+
+        {paginationRange.map((pageNumber, index) => {
+          if (pageNumber === DOTS) {
+            return DOTS;
+          }
+
           return (
             <button
               className={`pageButton ${
-                index === page ? "active-pageButton" : null
+                pageNumber === currentPage ? "active-pageButton" : null
               }`}
               key={index}
               onClick={() => {
-                handlePage(index);
-                // setItemOffset(page);
+                onPageChange(pageNumber);
               }}
             >
-              {index + 1}
+              {pageNumber}
             </button>
           );
         })}
-        {itemOffset > 15 ? "" : "..."}
         <button
           className="pageButton"
-          onClick={() => {
-            handlePage(userData.length - 1);
-          }}
+          onClick={next}
+          disabled={currentPage === lastPage}
         >
-          {userData.length}
-        </button>
-        <button className="pageButton" onClick={next}>
           <img src={arrowRight} alt="arrowLeft" />
         </button>
       </div>

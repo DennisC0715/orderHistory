@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import "./UserActivity.css";
-import { paginateFunction } from "../Redux/userActivity-reducer";
 
-const UserActivity = ({ buying, selling, onSetData, userData, handlePage }) => {
+const UserActivity = ({ buying, selling, setData, dataBase }) => {
   const [isBuySelected, setIsBuySelected] = useState(false);
   const [isSellSelected, setIsSellSelected] = useState(false);
   const [isAllSelected, setIsAllSelected] = useState(true);
-  const pagedBuyingData = paginateFunction(buying);
-  const pagedSellingData = paginateFunction(selling);
 
   return (
     <section className="container">
       <button
         className={`button ${isBuySelected ? "button-active" : null}`}
         onClick={() => {
-          handlePage(0);
-          onSetData(pagedBuyingData);
+          setData(buying);
           setIsBuySelected(true);
           setIsSellSelected(false);
           setIsAllSelected(false);
@@ -26,8 +22,7 @@ const UserActivity = ({ buying, selling, onSetData, userData, handlePage }) => {
       <button
         className={`button ${isSellSelected ? "button-active" : null}`}
         onClick={() => {
-          handlePage(0);
-          onSetData(pagedSellingData);
+          setData(selling);
           setIsSellSelected(true);
           setIsAllSelected(false);
           setIsBuySelected(false);
@@ -39,7 +34,8 @@ const UserActivity = ({ buying, selling, onSetData, userData, handlePage }) => {
       <button
         className={`button ${isAllSelected ? "button-active" : null}`}
         onClick={() => {
-          onSetData(userData);
+          // onSetData(userData);
+          setData(dataBase);
           setIsAllSelected(true);
           setIsBuySelected(false);
           setIsSellSelected(false);
