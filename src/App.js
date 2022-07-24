@@ -22,7 +22,7 @@ function App() {
     const firstPageIndex = (currentPage - 1) * itemsPerPage;
     const lastPageIndex = firstPageIndex + itemsPerPage;
     return data.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, data]);
+  }, [data, currentPage]);
 
   return (
     <>
@@ -32,8 +32,8 @@ function App() {
         buying={buyingData}
         selling={sellingData}
         setData={setData}
-        data={data}
         dataBase={dataBase}
+        setCurrentPage={setCurrentPage}
       />
       <ActivityList pageData={currentPageData} />
       <Pagination
