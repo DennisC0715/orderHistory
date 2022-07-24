@@ -33,7 +33,7 @@ function App() {
         selling={sellingData}
         setData={setData}
         dataBase={dataBase}
-        setCurrentPage={setCurrentPage}
+        setCurrentPage={(page) => setCurrentPage(page)}
       />
       <ActivityList pageData={currentPageData} />
       <Pagination
